@@ -1,9 +1,10 @@
-public enum ProjectileType
+public enum AttributeType
 {
-    Normal,
     Explosion,
-    Posion,
+    Poison,
     Ice,
     Lighting,
-    Pierce
+    Pierce,
+    Normal,
+    TypeCount
 }

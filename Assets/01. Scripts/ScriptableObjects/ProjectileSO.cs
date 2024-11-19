@@ -1,10 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ProjectileSO", menuName = "ScriptableObject/ProjectileSO", order = 1)]
+[CreateAssetMenu(fileName = "ProjectileSO", menuName = "ScriptableObject/Projectile", order = 3)]
 public class ProjectileSO : ScriptableObject
 {
-    [SerializeField] private ProjectileType type;
-    [SerializeField] private float shootSpeed;
-    [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private Color effectColor;
+    public float shootSpeed;
+    public Sprite projectileSprite;
 }

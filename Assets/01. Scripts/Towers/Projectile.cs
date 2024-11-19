@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//TODO : 피그마보고 수정~
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private Outline outline;
