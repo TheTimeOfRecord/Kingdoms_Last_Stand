@@ -11,10 +11,9 @@ public enum AIState
     Dead
 }
 
-[RequireComponent(typeof(MonsterStats))]
 public class Monster : MonoBehaviour
 {
-    private MonsterStats monsterStats;
+    [SerializeField] private MonsterStats monsterStats;
     private int currentHealth;
     private Transform currentTarget;
     private List<Transform> visitedTargets = new List<Transform>();
@@ -25,27 +24,11 @@ public class Monster : MonoBehaviour
     private AIState currentState = AIState.Idle;
     private float attackCooldown;
 
-
-    void Awake()
-    {
-        // MonsterStats를 같은 오브젝트에서 가져오기
-        monsterStats = GetComponent<MonsterStats>();
-
-        if (monsterStats == null)
-        {
-            Debug.LogError("MonsterStats is not attached to the object!");
-            enabled = false;
-            return;
-        }
-    }
-
     void Start()
     {
-        // Initialize runtime stats
         currentHealth = monsterStats.maxHealth;
         attackCooldown = 0f;
 
-        // Initialize references
         animator = GetComponent<Animator>();
         castle = GameObject.FindGameObjectWithTag("Castle").transform;
         shields = GameObject.FindGameObjectsWithTag("Shield").Select(s => s.transform).ToArray();
@@ -108,7 +91,6 @@ public class Monster : MonoBehaviour
         if (attackCooldown <= 0)
         {
             Debug.Log($"Attacking {currentTarget.name} with {monsterStats.attackDamage} damage!");
-            // Add attack logic (e.g., reduce target's health)
             attackCooldown = 1 / monsterStats.attackSpeed;
         }
     }
