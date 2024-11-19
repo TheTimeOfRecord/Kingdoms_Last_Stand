@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackTypeStat
 {
     public int upgradeCount = 0;
-    public bool hasType = false;
+    public bool isActive = false;
     public float currentDamage = 0;
     public AttackTypeStatSO statData;
 
