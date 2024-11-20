@@ -8,15 +8,17 @@ public class ConstructPoint : MonoBehaviour
     public Transform constructPosition;
     public Tower ConstructedTower { get; private set; }
 
+    [SerializeField] private GameObject selectImage;
+
     private void OnMouseEnter()
     {
-        Debug.Log("Enter");
+        selectImage.SetActive(true);
         ConstructManager.Instance.SetConstructPoint(this);
     }
 
     private void OnMouseExit()
     {
-        Debug.Log("Exit");
+        selectImage.SetActive(false);
         ConstructManager.Instance.SetConstructPoint(null);
     }
 
