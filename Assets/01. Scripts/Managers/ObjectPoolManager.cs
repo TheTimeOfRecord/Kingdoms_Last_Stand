@@ -3,7 +3,7 @@ using UnityEngine.Pool;
 
 public class ObjectPoolManager : SingleTonBase<ObjectPoolManager>
 {
-    private IObjectPool<Projectile> projectilePool;
+    private IObjectPool<Projectile> objectPool;
 
     [SerializeField] private Projectile projectilePrefab;
     [SerializeField] private bool collectionCheck = true;
@@ -14,7 +14,7 @@ public class ObjectPoolManager : SingleTonBase<ObjectPoolManager>
     {
         base.Awake();
 
-        projectilePool = new ObjectPool<Projectile>(CreateProjectile,
+        objectPool = new ObjectPool<Projectile>(CreateProjectile,
                 OnGetFromPool, OnReleaseToPool, OnDestroyPooledObject,
                 collectionCheck, defaultCapacity, maxSize);
     }
@@ -22,7 +22,7 @@ public class ObjectPoolManager : SingleTonBase<ObjectPoolManager>
     private Projectile CreateProjectile()
     {
         Projectile projectileInstance = Instantiate(projectilePrefab);
-        projectileInstance.ObjectPool = projectilePool;
+        projectileInstance.ObjectPool = objectPool;
         return projectileInstance;
     }
 
@@ -43,6 +43,6 @@ public class ObjectPoolManager : SingleTonBase<ObjectPoolManager>
 
     public IObjectPool<Projectile> GetProjectilePool()
     {
-        return projectilePool;
+        return objectPool;
     }
 }

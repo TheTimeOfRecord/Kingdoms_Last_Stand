@@ -5,16 +5,16 @@ using static UnityEngine.GraphicsBuffer;
 
 public class MonsterDetector : MonoBehaviour
 {
-    private Transform HQTowerPosition = GameManager.Instance.HqTower.transform;
+    private Transform HQTowerPosition;
     private Vector3 closestMonsterDirection;
-    private Collider2D[] detectedMonsters;
+    private Collider2D[] detectedMonsters = new Collider2D[15];
     private LayerMask layerMask;
     private float towerAttackRange;
 
     private void Awake()
     {
+        HQTowerPosition = GameManager.Instance.HqTower.gameObject.transform;
         layerMask = LayerMask.GetMask("Enemy");
-        detectedMonsters = new Collider2D[15];
     }
 
     public void InitMonsterDetector(float range)
