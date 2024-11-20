@@ -46,8 +46,13 @@ public class TowerStatsHandler
     {
         SellPrice += UpgradePrice(type);
     }
-    //변경 필요, 업그레이드를 할 때, 이 메서드가 호출되어 가격이 증가해야함
-    //public float TotalSellPrice => 
-    
-    //메서드 필요 => tower.stats.typeStats[index].currentDamage 를 변경해줄 방법...
+
+    public void ActiveTowerTypeAttack(AttributeType type)
+    {
+        int index = (int)type;
+
+        if (tower.stats.typeStats[index].isActive == true) return;
+
+        tower.stats.typeStats[index].isActive = true;
+    }
 }
