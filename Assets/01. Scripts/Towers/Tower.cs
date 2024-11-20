@@ -13,20 +13,20 @@ public class Tower : MonoBehaviour
     public TowerStats stats = new TowerStats();
     //public TowerStatsHandler statsHandler = new TowerStatsHandler(this);
 
-    private void Awake()
+    protected virtual void Awake()
     {
         shooter = GetComponent<Shooter>();
         detector = GetComponent<MonsterDetector>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         //stats.InitTowerData(float range, float rate); -> 정확한 값 매개변수에 넣기
         //stats.InitAttackStat(AttackTypeStatListSO typeListData);
         //detector.InitMonsterDetector(towerData.attackRange);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         //Shooter.UpdateAttack();
         //MonsterDetector.UpdateDetect;
