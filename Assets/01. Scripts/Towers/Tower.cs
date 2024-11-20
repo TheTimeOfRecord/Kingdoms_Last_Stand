@@ -13,7 +13,7 @@ public class Tower : MonoBehaviour
     public TowerStats stats = new TowerStats();
     //public TowerStatsHandler statsHandler = new TowerStatsHandler(this);
 
-    private void Awake()
+    protected virtual void Awake()
     {
         shooter = GetComponent<Shooter>();
         detector = GetComponent<MonsterDetector>();
@@ -26,7 +26,7 @@ public class Tower : MonoBehaviour
         //detector.InitMonsterDetector(towerData.attackRange);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         //Shooter.UpdateAttack();
         //MonsterDetector.UpdateDetect;
