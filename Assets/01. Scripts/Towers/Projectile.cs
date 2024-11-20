@@ -1,79 +1,89 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.UI;
 
-//TODO : 코루틴 수정
 public class Projectile : MonoBehaviour
 {
     private ProjectileSO projectileData = null;
+    private SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
+    private Rigidbody2D projectileRigidbody;
     private Outline outline;
-    private Sprite projectileSprite;
-
-    private void Awake()
-    {
-        outline = GetComponent<Outline>();
-        trailRenderer = GetComponent<TrailRenderer>();
-    }
-
-    //임시
-    private void MakeTrialRenderer()
-    {
-        if (trailRenderer != null)
-        {
-            // TrailRenderer 설정 변경
-            trailRenderer.startColor = Color.red;
-            trailRenderer.endColor = Color.yellow;
-            trailRenderer.time = 2.0f;
-            trailRenderer.startWidth = 0.5f;
-            trailRenderer.endWidth = 0.1f;
-        }
-    }
-
-    public void ShootProjectile(Vector3 position, AttributeType type, float damage, Color color)
-    {
-        InitProjectile(color);
-    }
-
-    private void InitProjectile(Color color)
-    {
-        if (!projectileData)
-        {
-            outline.effectColor = color;
-            trailRenderer.startColor = color;
-            trailRenderer.endColor = Color.white;
-            projectileSprite = projectileData.projectileSprite;
-        }
-    }
-
+    private float speed;
+    private float damage;
+    private float attackRange;
+    private bool isReleased = false;
     [SerializeField] private float timeoutDelay = 3f;
 
     private IObjectPool<Projectile> objectPool;
-
     public IObjectPool<Projectile> ObjectPool { set => objectPool = value; }
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        trailRenderer = GetComponent<TrailRenderer>();
+        projectileRigidbody = GetComponent<Rigidbody2D>();
+        outline = GetComponent<Outline>();
+    }
+
+    public void SetPosition(Vector3 towerPosition, Vector3 targetDirection)
+    {
+        float angle = Mathf.Atan2(targetDirection.y, towerPosition.y) * Mathf.Rad2Deg;
+        transform.SetPositionAndRotation(towerPosition, Quaternion.Euler(0, 0, angle));
+    }
+
+    public void SetProjectileProperties(TowerStats stats, AttackTypeStat attackType, ProjectileSO data)
+    {
+        isReleased = false;
+        projectileData = data;
+        speed = projectileData.shootSpeed;
+        damage = attackType.currentDamage;
+        attackRange = stats.currentRange;
+        outline.effectColor = attackType.statData.typeColor;
+        trailRenderer.startColor = attackType.statData.typeColor;
+        trailRenderer.endColor = Color.white;
+        spriteRenderer.sprite = projectileData.projectileSprite;
+    }
+
+    public void Shoot(Vector3 targetDirection)
+    {
+        projectileRigidbody.velocity = targetDirection.normalized * speed;
+    }
 
     public void Deactivate()
     {
-        //StartCoroutine(DeactivateRoutine(timeoutDelay));
+        Invoke(nameof(DisappearProjectile), attackRange/speed);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            if (isReleased) return;
+
+            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            
+            if (damageable != null)
+            {
+                damageable.TakeDamage(damage);
+            }
+
+            CancelInvoke(nameof(DisappearProjectile));
+            ReleaseObject();
+        }
+    }
+
+    private void DisappearProjectile()
+    {
+        if (isReleased) return;
+        ReleaseObject();
+    }
+
+    private void ReleaseObject()
+    {
+        isReleased = true;
+        projectileRigidbody.velocity = Vector2.zero;
         objectPool.Release(this);
     }
-
-    private void SomeMethod()
-    {
-        //코루틴 대체제... 
-    }
-    /* 코루틴 사용 X
-    IEnumerator DeactivateRoutine(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        Rigidbody2D rBody = GetComponent<Rigidbody2D>();
-        rBody.velocity = Vector2.zero;
-        rBody.angularVelocity = 0f;
-
-        objectPool.Release(this);
-    }
-    */
 }
