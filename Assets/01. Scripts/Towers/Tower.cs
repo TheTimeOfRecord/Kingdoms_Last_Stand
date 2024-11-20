@@ -21,8 +21,9 @@ public class Tower : MonoBehaviour
 
     private void Start()
     {
-        //stats.InitTowerData(float range, float rate);
+        //stats.InitTowerData(float range, float rate); -> 정확한 값 매개변수에 넣기
         //stats.InitAttackStat(AttackTypeStatListSO typeListData);
+        //detector.InitMonsterDetector(towerData.attackRange);
     }
 
     private void Update()

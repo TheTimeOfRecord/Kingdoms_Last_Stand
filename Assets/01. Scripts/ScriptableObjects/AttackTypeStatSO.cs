@@ -7,5 +7,5 @@ public class AttackTypeStatSO : ScriptableObject
     public float damage;
     public float upgradeFactor;
     public float upgradeCost;
-    public Color TypeColor;
+    public Color typeColor;
 }
