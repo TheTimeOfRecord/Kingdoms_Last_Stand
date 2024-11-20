@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TowerStats
 {
+    private readonly int normalTowerListCount = 6;
+
     //포탑이 가진 공격속성
     public List<AttackTypeStat> typeStats = new List<AttackTypeStat>();
 
@@ -27,6 +29,15 @@ public class TowerStats
         foreach(var statSO in listData.AttackLists)
         {
             typeStats.Add(new AttackTypeStat(statSO));
+        }
+
+        if(listData.AttackLists.Count == normalTowerListCount)
+        {
+            typeStats[normalTowerListCount - 1].isActive = true;
+        }
+        else
+        {
+            typeStats[0].isActive = true;
         }
     }
 }

@@ -11,25 +11,38 @@ public class Tower : MonoBehaviour
     public Shooter shooter;
     public MonsterDetector detector;
     public TowerStats stats = new TowerStats();
-    //public TowerStatsHandler statsHandler = new TowerStatsHandler(this);
+    public TowerStatsHandler statsHandler;
+    private float detectInterval;
+    private float detectTimer = 0f;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         shooter = GetComponent<Shooter>();
         detector = GetComponent<MonsterDetector>();
+        statsHandler = new TowerStatsHandler(this);
     }
 
-    private void Start()
+    protected virtual void Start()
     {
-        //stats.InitTowerData(float range, float rate); -> 정확한 값 매개변수에 넣기
-        //stats.InitAttackStat(AttackTypeStatListSO typeListData);
-        //detector.InitMonsterDetector(towerData.attackRange);
+        stats.InitTowerData(towerData.attackRange, towerData.attackRate);
+        stats.InitAttackStats(typeListData);
+        detector.InitMonsterDetector(towerData.attackRange);
+        detectInterval = stats.currentRate;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        //Shooter.UpdateAttack();
-        //MonsterDetector.UpdateDetect;
+        detectTimer += Time.deltaTime;
+        detector.UpdateDetect();
+        if (detectTimer >= detectInterval)
+        {
+            detectTimer = 0f;
+            detector.UpdateDetect();
+            if (detector.UpdateDetect() != Vector3.zero)
+            {
+                shooter.UpdateAttack(detector.UpdateDetect(), stats);
+            }
+        }
     }
 
     private void Upgrade(int index)
