@@ -115,6 +115,7 @@ public class Monster : MonoBehaviour, IDamageable
         animator.SetTrigger("Death");
 
         GameManager.Instance.AddGold(monsterStats.goldDrop);
+        GameManager.Instance.AddExp(monsterStats.expDrop);
 
         Invoke(nameof(ReturnToPool), 2f);
     }

@@ -18,6 +18,12 @@ public class GameManager : SingleTonBase<GameManager>
         Debug.Log($"Gold collected: {totalGold}");
     }
 
+    public void AddExp(int amount)
+    {
+        totalGold += amount;
+        Debug.Log($"Gold collected: {totalGold}");
+    }
+
     public void GameOver()
     {
         if(HqTower.CurrentHealth <= 0)
