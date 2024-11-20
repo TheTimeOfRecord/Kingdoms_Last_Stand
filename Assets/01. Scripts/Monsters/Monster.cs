@@ -22,7 +22,7 @@ public class Monster : MonoBehaviour, IDamageable
     private float currentHealth;
     private Transform mainTarget;
 
-    [SerializeField] private MonsterStats monsterStats;
+    [SerializeField] private MonsterStatsSO monsterStats;
 
     void Awake()
     {
@@ -87,7 +87,7 @@ public class Monster : MonoBehaviour, IDamageable
     {
         if (mainTarget != null && currentState == AIState.Attacking)
         {
-            //gameManager.Castle.TakeDamage(monsterStats.attackDamage);
+            GameManager.Instance.castle.TakeDamage(monsterStats.attackDamage);
         }
     }
 
@@ -114,7 +114,7 @@ public class Monster : MonoBehaviour, IDamageable
         navMeshAgent.isStopped = true;
         animator.SetTrigger("Death");
 
-        //gameManager.AddGold(monsterStats.goldDrop);
+        GameManager.Instance.AddGold(monsterStats.goldDrop);
 
         Invoke(nameof(ReturnToPool), 2f);
     }

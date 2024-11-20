@@ -8,7 +8,7 @@ public class GameManager : SingleTonBase<GameManager>
 
     public bool IsGameOver { get; private set; }
 
-    [SerializeField] public GameObject castle;
+    [SerializeField] public TowerHQ castle;
 
     private int totalGold = 0;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewMonsterStats", menuName = "Monster/Stats")]
-public class MonsterStats : ScriptableObject
+public class MonsterStatsSO : ScriptableObject
 {
     public string monsterName;
     public int maxHealth;
