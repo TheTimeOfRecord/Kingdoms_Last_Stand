@@ -13,7 +13,7 @@ public class Shooter : MonoBehaviour
 
     private IObjectPool<Projectile> objectPool;
 
-    private void Awake()
+    private void Start()
     {
         objectPool = ObjectPoolManager.Instance.GetProjectilePool();
     }
@@ -26,7 +26,7 @@ public class Shooter : MonoBehaviour
 
     private void MakeProjectile(Vector3 targetDirection, TowerStats stats)
     {
-        if (objectPool != null) return;
+        if (objectPool == null) return;
 
         for (int index = 0; index < stats.typeStats.Count; index++)
         {
