@@ -8,4 +8,6 @@ public class AttackTypeStatSO : ScriptableObject
     public float upgradeFactor;
     public float upgradeCost;
     public Color typeColor;
+    public string typeKorName;
+    public string typeDescription;
 }
