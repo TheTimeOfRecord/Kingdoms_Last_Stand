@@ -13,6 +13,7 @@ public class ConstructManager : SingletonDestroyable<ConstructManager>
         {
             //TODO 설치
             Debug.Log("설치 시도");
+            NowPoint.ConstructTower(SelectedTower);
         }
     }
 
@@ -44,5 +45,10 @@ public class ConstructManager : SingletonDestroyable<ConstructManager>
         }
 
         return false;
+    }
+
+    public void TestButton(Tower tower)
+    {
+        SelectedTower = tower;
     }
 }

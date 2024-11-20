@@ -10,11 +10,13 @@ public class ConstructPoint : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        Debug.Log("Enter");
         ConstructManager.Instance.SetConstructPoint(this);
     }
 
     private void OnMouseExit()
     {
+        Debug.Log("Exit");
         ConstructManager.Instance.SetConstructPoint(null);
     }
 
@@ -22,7 +24,7 @@ public class ConstructPoint : MonoBehaviour
     {
         ConstructedTower = tower;
         IsTowerConstructed = true;
-        //Instantiate(tower.gameObject, constructPosition);
+        Instantiate(tower.gameObject, constructPosition);
     }
 
     public void DestroyTower()
