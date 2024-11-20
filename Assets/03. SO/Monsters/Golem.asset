@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Golem
   m_EditorClassIdentifier: 
   monsterName: 
-  maxHealth: 0
-  moveSpeed: 0
-  attackDamage: 0
-  attackSpeed: 0
-  goldDrop: 0
+  maxHealth: 300
+  moveSpeed: 1
+  attackDamage: 5
+  attackSpeed: 1
+  attackRange: 1
+  goldDrop: 20

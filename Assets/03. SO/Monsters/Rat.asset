@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Rat
   m_EditorClassIdentifier: 
   monsterName: 
-  maxHealth: 0
-  moveSpeed: 0
-  attackDamage: 0
-  attackSpeed: 0
-  goldDrop: 0
+  maxHealth: 30
+  moveSpeed: 5
+  attackDamage: 2
+  attackSpeed: 2
+  attackRange: 1
+  goldDrop: 3

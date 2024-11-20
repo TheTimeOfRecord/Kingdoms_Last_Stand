@@ -10,5 +10,6 @@ public class MonsterStats : ScriptableObject
     public float moveSpeed;
     public int attackDamage;
     public float attackSpeed;
+    public float attackRange;
     public int goldDrop;
 }

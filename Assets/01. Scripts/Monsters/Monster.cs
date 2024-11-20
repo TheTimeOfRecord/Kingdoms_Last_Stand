@@ -9,132 +9,143 @@ public enum AIState
     Idle,
     Walking,
     Attacking,
-    Dead
+    Dead,
+    Hit
 }
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamageable
 {
-    [SerializeField] private MonsterStats monsterStats;
-    private int currentHealth;
-    private Transform currentTarget;
-    private List<Transform> visitedTargets = new List<Transform>();
-    private Transform castle;
-    private Transform[] shields;
-
+    private NavMeshAgent navMeshAgent;
     private Animator animator;
+
     private AIState currentState = AIState.Idle;
-    private float attackCooldown;
+    private float currentHealth;
+    private Transform mainTarget;
+
+    [SerializeField] private MonsterStats monsterStats;
+
+    void Awake()
+    {
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+    }
 
     void Start()
     {
+        mainTarget = GameManager.Instance.castle.transform;
+
         currentHealth = monsterStats.maxHealth;
-        attackCooldown = 0f;
 
-        animator = GetComponent<Animator>();
-        castle = GameObject.FindGameObjectWithTag("Castle").transform;
-        shields = GameObject.FindGameObjectsWithTag("Shield").Select(s => s.transform).ToArray();
+        navMeshAgent.speed = monsterStats.moveSpeed;
 
-        SetNextTarget();
+        ChangeState(AIState.Walking);
     }
 
     void Update()
     {
         switch (currentState)
         {
-            case AIState.Idle:
-                IdleBehavior();
-                break;
             case AIState.Walking:
                 WalkingBehavior();
                 break;
             case AIState.Attacking:
                 AttackingBehavior();
                 break;
+            case AIState.Hit:
+                break;
             case AIState.Dead:
                 break;
         }
-
-        if (attackCooldown > 0)
-        {
-            attackCooldown -= Time.deltaTime;
-        }
-    }
-
-    private void IdleBehavior()
-    {
-        animator.SetTrigger("Idle");
     }
 
     private void WalkingBehavior()
     {
-        if (currentTarget == null) return;
-
-        animator.SetTrigger("Run");
-        Vector2 direction = (currentTarget.position - transform.position).normalized;
-        transform.Translate(direction * monsterStats.moveSpeed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, currentTarget.position) < 1.0f)
+        if (mainTarget != null)
         {
-            ChangeState(AIState.Attacking);
+            navMeshAgent.SetDestination(mainTarget.position);
+
+            float distanceToTarget = Vector3.Distance(transform.position, mainTarget.position);
+            if (distanceToTarget <= monsterStats.attackRange)
+            {
+                ChangeState(AIState.Attacking);
+            }
         }
     }
 
     private void AttackingBehavior()
     {
-        if (currentTarget == null)
+        if (mainTarget != null)
         {
-            ChangeState(AIState.Idle);
-            return;
-        }
+            navMeshAgent.isStopped = true;
+            animator.SetTrigger("Attack");
 
-        animator.SetTrigger("Attack");
-
-        if (attackCooldown <= 0)
-        {
-            Debug.Log($"Attacking {currentTarget.name} with {monsterStats.attackDamage} damage!");
-            attackCooldown = 1 / monsterStats.attackSpeed;
+            Invoke(nameof(DealDamageToCastle), 1 / monsterStats.attackSpeed);
         }
     }
 
-    public void TakeDamage(int damage)
+    private void DealDamageToCastle()
     {
-        animator.SetTrigger("Hit");
+        if (mainTarget != null && currentState == AIState.Attacking)
+        {
+            //gameManager.Castle.TakeDamage(monsterStats.attackDamage);
+        }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        if (currentState == AIState.Dead) return;
+
         currentHealth -= damage;
+        animator.SetTrigger("Hit");
 
         if (currentHealth <= 0)
         {
             ChangeState(AIState.Dead);
             Die();
         }
+        else
+        {
+            ChangeState(AIState.Hit);
+        }
     }
 
     private void Die()
     {
+        navMeshAgent.isStopped = true;
         animator.SetTrigger("Death");
-        Debug.Log($"{monsterStats.monsterName} died!");
-        Destroy(gameObject, 1f);
+
+        //gameManager.AddGold(monsterStats.goldDrop);
+
+        Invoke(nameof(ReturnToPool), 2f);
     }
 
-    private void SetNextTarget()
+    private void ReturnToPool()
     {
-        foreach (Transform shield in shields)
-        {
-            if (!visitedTargets.Contains(shield))
-            {
-                currentTarget = shield;
-                visitedTargets.Add(shield);
-                ChangeState(AIState.Walking);
-                return;
-            }
-        }
-
-        currentTarget = castle;
-        ChangeState(AIState.Walking);
+        gameObject.SetActive(false);
     }
 
     private void ChangeState(AIState newState)
     {
         if (currentState == newState) return;
         currentState = newState;
+
+        switch (newState)
+        {
+            case AIState.Idle:
+                animator.SetTrigger("Idle");
+                navMeshAgent.isStopped = true;
+                break;
+            case AIState.Walking:
+                animator.SetTrigger("Run");
+                navMeshAgent.isStopped = false;
+                break;
+            case AIState.Attacking:
+                animator.SetTrigger("Attack");
+                break;
+            case AIState.Dead:
+                animator.SetTrigger("Death");
+                navMeshAgent.isStopped = true;
+                break;
+        }
     }
 }

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Pebble
   m_EditorClassIdentifier: 
   monsterName: 
-  maxHealth: 0
-  moveSpeed: 0
-  attackDamage: 0
-  attackSpeed: 0
-  goldDrop: 0
+  maxHealth: 50
+  moveSpeed: 3
+  attackDamage: 3
+  attackSpeed: 1
+  attackRange: 1
+  goldDrop: 3
