@@ -28,8 +28,9 @@ public class Projectile : MonoBehaviour
 
     public void SetPosition(Vector3 towerPosition, Vector3 targetDirection)
     {
-        float angle = Mathf.Atan2(targetDirection.y, towerPosition.y) * Mathf.Rad2Deg;
-        transform.SetPositionAndRotation(towerPosition, Quaternion.Euler(0, 0, angle));
+        float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
+        Debug.Log(angle);
+        transform.SetPositionAndRotation(towerPosition, Quaternion.Euler(0, 0, angle));//Quaternion.Euler(0, 0, angle)
     }
 
     public void SetProjectileProperties(TowerStats stats, AttackTypeStat attackType, ProjectileSO data)
@@ -83,6 +84,7 @@ public class Projectile : MonoBehaviour
     private void ReleaseObject()
     {
         isReleased = true;
+        trailRenderer.Clear();
         projectileRigidbody.velocity = Vector2.zero;
         objectPool.Release(this);
     }

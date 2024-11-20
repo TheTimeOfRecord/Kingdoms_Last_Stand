@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : SingleTonBase<GameManager>
 {
-    public TowerHQ HqTower { get; set; }
+    public TowerHQ HqTower;
 
     public bool IsGameOver { get; private set; }
 

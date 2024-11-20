@@ -133,11 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.69
+      value: 7.62
       objectReference: {fileID: 0}
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.29
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa07895c4e109249810e91fec025d42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HQ: {fileID: 1977533455}
+  HqTower: {fileID: 0}
 --- !u!4 &793440545
 Transform:
   m_ObjectHideFlags: 0
@@ -396,6 +396,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!1 &1445633085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445633086}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1445633086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445633085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1977533457}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1474951510
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,11 +629,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.45
+      value: 2.35
       objectReference: {fileID: 0}
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.74
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.z
@@ -658,6 +689,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1977533457}
   - component: {fileID: 1977533456}
+  - component: {fileID: 1977533458}
+  - component: {fileID: 1977533460}
+  - component: {fileID: 1977533459}
   m_Layer: 0
   m_Name: HQ
   m_TagString: Untagged
@@ -729,9 +763,56 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1445633086}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1977533458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977533455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcbc8de17ffaf243b095da41ff2c923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typeListData: {fileID: 11400000, guid: fcb38be5a4596834db13855611f312a4, type: 2}
+  towerData: {fileID: 11400000, guid: c61eb6460afb832438d53d7f29852347, type: 2}
+  shooter: {fileID: 0}
+  detector: {fileID: 0}
+  maxHealth: 0
+  towerSpawnRate: 0
+--- !u!114 &1977533459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977533455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40c25569f971e4fad02237f8413a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: 5d0bb8cc364df3a43a2dd9156a87095d, type: 2}
+  towerShoot:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1977533460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977533455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8b5af5aba0b84dacaa9b135999268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4094190314437772434
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -751,6 +832,14 @@ PrefabInstance:
     - target: {fileID: 655031722915882628, guid: 180021028df010140b13bcb3d330afd7, type: 3}
       propertyPath: towerShoot.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397284593474158296, guid: 180021028df010140b13bcb3d330afd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397284593474158296, guid: 180021028df010140b13bcb3d330afd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3254135069681897401, guid: 180021028df010140b13bcb3d330afd7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -796,6 +885,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestTower
       objectReference: {fileID: 0}
+    - target: {fileID: 6627801624178935991, guid: 180021028df010140b13bcb3d330afd7, type: 3}
+      propertyPath: detector
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -811,11 +904,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.8
+      value: 5.07
       objectReference: {fileID: 0}
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.46
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6612180708274032479, guid: 410a9b88530a6194daa7be6a52298007, type: 3}
       propertyPath: m_LocalPosition.z

@@ -16,13 +16,13 @@ public class TowerHQ : Tower
         base.Awake();
 
         CurrentHealth = maxHealth;
+        GameManager.Instance.HqTower = this;
     }
 
     protected override void Start()
     {
         base.Start();
 
-        GameManager.Instance.HqTower = this;
     }
 
     protected override void Update()
