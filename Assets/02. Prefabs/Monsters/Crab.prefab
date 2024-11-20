@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5526353476450595209}
   - component: {fileID: 1999202439166157480}
   - component: {fileID: 8398933080546799426}
+  - component: {fileID: -939736732097090927}
   m_Layer: 0
   m_Name: Crab
   m_TagString: Untagged
@@ -120,3 +121,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterStats: {fileID: 11400000, guid: 11490964625917e4f8c6033a42ca6210, type: 2}
+--- !u!195 &-939736732097090927
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5191149771219783309}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.32
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.64
+  m_BaseOffset: 0.32
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
