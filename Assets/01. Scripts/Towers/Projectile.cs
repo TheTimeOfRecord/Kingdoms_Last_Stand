@@ -55,14 +55,14 @@ public class Projectile : MonoBehaviour
         Invoke(nameof(DisappearProjectile), attackRange/speed);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collider.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             if (isReleased) return;
 
-            IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+            IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
             
             if (damageable != null)
             {
