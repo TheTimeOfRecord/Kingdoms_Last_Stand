@@ -19,7 +19,7 @@ public class Tower : MonoBehaviour
         detector = GetComponent<MonsterDetector>();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         //stats.InitTowerData(float range, float rate); -> 정확한 값 매개변수에 넣기
         //stats.InitAttackStat(AttackTypeStatListSO typeListData);
