@@ -130,10 +130,10 @@ public class Monster : MonoBehaviour, IDamageable
         navMeshAgent.isStopped = true;
         animator.SetTrigger("Death");
 
-        GameManager.Instance.AddGold(monsterStats.goldDrop);
-        GameManager.Instance.AddExp(monsterStats.expDrop);
+        //GameManager.Instance.AddGold(monsterStats.goldDrop);
+        //GameManager.Instance.AddExp(monsterStats.expDrop);
 
-        Invoke(nameof(ReturnToPool), 2f);
+        Invoke(nameof(ReturnToPool), 1f);
     }
 
     private void ReturnToPool()
