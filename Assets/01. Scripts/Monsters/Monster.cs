@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Pool;
 using UnityEngine.AI;
 
 public enum AIState
 {
     Idle,
-    Walking,
+    Run,
     Attacking,
     Dead,
     Hit
@@ -23,11 +24,15 @@ public class Monster : MonoBehaviour, IDamageable
     private Transform mainTarget;
 
     [SerializeField] private MonsterStatsSO monsterStats;
+    private IObjectPool<Monster> objectPool;
+    public IObjectPool<Monster> ObjectPool { set => objectPool = value; }
 
     void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        navMeshAgent.updateRotation = false;
+        navMeshAgent.updateUpAxis = false;
     }
 
     void Start()
@@ -38,14 +43,14 @@ public class Monster : MonoBehaviour, IDamageable
 
         navMeshAgent.speed = monsterStats.moveSpeed;
 
-        ChangeState(AIState.Walking);
+        ChangeState(AIState.Run);
     }
 
     void Update()
     {
         switch (currentState)
         {
-            case AIState.Walking:
+            case AIState.Run:
                 WalkingBehavior();
                 break;
             case AIState.Attacking:
@@ -133,11 +138,11 @@ public class Monster : MonoBehaviour, IDamageable
         switch (newState)
         {
             case AIState.Idle:
-                animator.SetTrigger("Idle");
+                animator.SetBool("Run", false);
                 navMeshAgent.isStopped = true;
                 break;
-            case AIState.Walking:
-                animator.SetTrigger("Run");
+            case AIState.Run:
+                animator.SetBool("Run",true);
                 navMeshAgent.isStopped = false;
                 break;
             case AIState.Attacking:
