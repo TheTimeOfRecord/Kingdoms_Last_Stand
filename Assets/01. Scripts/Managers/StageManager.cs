@@ -1,20 +1,20 @@
+using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] private StageSO stageData; // 스테이지 데이터
-    [SerializeField] private Transform spawnPoint; // 몬스터 스폰 위치
+    [SerializeField] private List<StageSO> stageData;
+    [SerializeField] private Transform spawnPoint;
+    private int stage = 0;
 
-    // 스테이지 데이터에 따라 풀 초기화
     private void InitializePools()
     {
-        foreach (var spawnInfo in stageData.monstersToSpawn)
+        foreach (MonsterSpawnInfo spawnInfo in stageData[stage].monstersToSpawn)
         {
             if (spawnInfo.monsterPrefab == null)
             {
-                Debug.LogError("Monster prefab is null in StageSO. Skipping...");
                 continue;
             }
 
@@ -22,27 +22,30 @@ public class StageManager : MonoBehaviour
         }
     }
 
-    // 스테이지 시작
     public void StartStage()
     {
-        InitializePools();
-        StartCoroutine(SpawnMonsters());
+        if(stage < stageData.Count)
+        {
+            InitializePools();
+            foreach (MonsterSpawnInfo spawnInfo in stageData[stage].monstersToSpawn)
+            {
+                StartCoroutine(SpawnMonsters(spawnInfo));
+            }
+            stage++;
+        }
     }
 
-    private IEnumerator SpawnMonsters()
+    private IEnumerator SpawnMonsters(MonsterSpawnInfo monsters)
     {
-        foreach (var spawnInfo in stageData.monstersToSpawn)
+        for (int i = 0; i < monsters.count; i++)
         {
-            for (int i = 0; i < spawnInfo.count; i++)
+            GameObject monster = SponeManager.Instance.GetFromPool(monsters.monsterPrefab);
+            if (monster != null)
             {
-                GameObject monster = SponeManager.Instance.GetFromPool(spawnInfo.monsterPrefab);
-                if (monster != null)
-                {
-                    monster.transform.position = spawnPoint.position;
-                }
-
-                yield return new WaitForSeconds(spawnInfo.spawnInterval);
+                monster.transform.position = spawnPoint.position;
             }
+
+            yield return new WaitForSeconds(monsters.spawnInterval);
         }
     }
 }
