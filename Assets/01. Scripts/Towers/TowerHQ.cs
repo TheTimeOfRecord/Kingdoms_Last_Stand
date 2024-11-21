@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerHQ : Tower
+public class TowerHQ : Tower, IDamageable
 {
     [Header("HQ Stats")]
     [SerializeField] private float maxHealth;
@@ -46,6 +46,16 @@ public class TowerHQ : Tower
     public void AddNormalTower()
     {
         //TODO : 타워를 늘리는 위치 필요
-        GameManager.Instance.Player.inventory.GetTower(DataManager.Instance.towerPrefabDatabase.TowerList[0]);
+        //GameManager.Instance.Player.inventory.GetTower(DataManager.Instance.towerPrefabDatabase.TowerList[0]);
+    }
+
+    public void StartDamageOverTime(float damage)
+    {
+        //추가 될 수도 있지만 일단 스킵
+    }
+
+    public void ApplySlowDown()
+    {
+        //아무것도 안합니다...
     }
 }

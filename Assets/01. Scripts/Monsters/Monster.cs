@@ -27,17 +27,28 @@ public class Monster : MonoBehaviour, IDamageable
     private IObjectPool<Monster> objectPool;
     public IObjectPool<Monster> ObjectPool { set => objectPool = value; }
 
+    private WaitForSeconds ticRate;
+    private float ticTimer = 10f;
+    private Coroutine ticDamageCoroutine;
+
+    private float slowAmount = 0.5f;
+    private Coroutine slowCoroutine;
+    private WaitForSeconds slotTime;
+
     void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         navMeshAgent.updateRotation = false;
         navMeshAgent.updateUpAxis = false;
+
+        ticRate = new WaitForSeconds(0.3f);
+        slotTime = new WaitForSeconds(10f);
     }
 
     void Start()
     {
-        mainTarget = GameManager.Instance.castle.transform;
+        mainTarget = GameManager.Instance.HqTower.transform;
 
         currentHealth = monsterStats.maxHealth;
 
@@ -92,7 +103,7 @@ public class Monster : MonoBehaviour, IDamageable
     {
         if (mainTarget != null && currentState == AIState.Attacking)
         {
-            GameManager.Instance.castle.TakeDamage(monsterStats.attackDamage);
+            GameManager.Instance.HqTower.TakeDamage(monsterStats.attackDamage);
         }
     }
 
@@ -153,5 +164,41 @@ public class Monster : MonoBehaviour, IDamageable
                 navMeshAgent.isStopped = true;
                 break;
         }
+    }
+
+    public void StartDamageOverTime(float damage)
+    {
+        if (ticDamageCoroutine != null) return;
+
+        ticDamageCoroutine = StartCoroutine(TakeTicDamage(damage));
+    }
+
+    public void ApplySlowDown()
+    {
+        if(slowCoroutine != null) return;
+
+        slowCoroutine = StartCoroutine(TakeSlotDown());
+    }
+
+    private IEnumerator TakeTicDamage(float damage)
+    {
+        float timer = ticTimer;
+        while(timer >= 0)
+        {
+            TakeDamage(damage);
+            yield return ticRate;
+            timer -= 0.3f;
+        }
+
+        ticDamageCoroutine = null;
+    }
+
+    private IEnumerator TakeSlotDown()
+    {
+        navMeshAgent.speed = monsterStats.moveSpeed * slowAmount;
+        yield return slotTime;
+        navMeshAgent.speed = monsterStats.moveSpeed;
+
+        slowCoroutine = null;
     }
 }
