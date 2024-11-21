@@ -8,11 +8,20 @@ public class GameManager : SingleTonBase<GameManager>
 
     public bool IsGameOver { get; private set; }
 
-    public Player Player { get; private set; }
+    [SerializeField] public TowerHQ castle;
 
-    protected override void Awake()
+    private int totalGold = 0;
+
+    public void AddGold(int amount)
     {
-        Player = new Player();
+        totalGold += amount;
+        Debug.Log($"Gold collected: {totalGold}");
+    }
+
+    public void AddExp(int amount)
+    {
+        totalGold += amount;
+        Debug.Log($"Gold collected: {totalGold}");
     }
 
     public void GameOver()

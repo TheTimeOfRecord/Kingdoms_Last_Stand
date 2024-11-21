@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b475a0b386ab05b4d9f0aff555733584, type: 3}
-  m_Name: Crab
+  m_Name: Golem_Armor
   m_EditorClassIdentifier: 
   monsterName: 
-  maxHealth: 0
-  moveSpeed: 0
-  attackDamage: 0
-  attackSpeed: 0
-  goldDrop: 0
+  maxHealth: 600
+  moveSpeed: 1
+  attackDamage: 10
+  attackSpeed: 1
+  attackRange: 1
+  goldDrop: 50
