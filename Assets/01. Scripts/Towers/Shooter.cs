@@ -8,10 +8,22 @@ using UnityEngine.Pool;
 public class Shooter : MonoBehaviour
 {
     public ProjectileSO projectileData;
-
+    private Transform shootPoint;
     [SerializeField] private UnityEvent towerShoot;
 
     private IObjectPool<Projectile> objectPool;
+
+    private void Awake()
+    {
+        foreach (Transform child in GetComponentsInChildren<Transform>())
+        {
+            if (child.name == "ShootPoint")
+            {
+                shootPoint = child;
+                break;
+            }
+        }
+    }
 
     private void Start()
     {
@@ -34,7 +46,7 @@ public class Shooter : MonoBehaviour
             {
                 Projectile projectileObject = objectPool.Get();
                 if (projectileObject == null) return;
-                projectileObject.SetPosition(transform.position, targetDirection);
+                projectileObject.SetPosition(shootPoint.position, targetDirection);
                 projectileObject.SetProjectileProperties(stats, stats.typeStats[index], projectileData);
                 projectileObject.Shoot(targetDirection);
                 projectileObject.Deactivate();
