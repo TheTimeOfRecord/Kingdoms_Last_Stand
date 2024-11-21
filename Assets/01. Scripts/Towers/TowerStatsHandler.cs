@@ -36,4 +36,20 @@ public class TowerStatsHandler
 
         tower.stats.typeStats[index].isActive = true;
     }
+
+    public bool TypeUpgrade(AttributeType type)
+    {
+        int index = (int)type;
+
+        //최대 강화수치 임시로 10 매직넘버
+        if (tower.stats.typeStats[index].upgradeCount <= 10)
+        {
+            tower.stats.typeStats[index].upgradeCount++;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
