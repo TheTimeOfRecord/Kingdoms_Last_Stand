@@ -3,7 +3,7 @@ public enum AttributeType
     Explosion,
     Poison,
     Ice,
-    Lighting,
+    Lightning,
     Pierce,
     Normal,
     TypeCount

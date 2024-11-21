@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2888510179728488127}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 640808213, guid: d48b13146ca07d64c9ad33e181bc40d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 830eb3d04692d464695c8db6c63154a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 2888510179728488127}
   - component: {fileID: 8199831574716442117}
   - component: {fileID: 9037235428357362081}
+  - component: {fileID: 3305702217588498258}
+  - component: {fileID: 2416405446680713055}
   m_Layer: 0
   m_Name: HQTower
   m_TagString: Untagged
@@ -110,12 +112,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4211560620665967074}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5205461447869730532}
+  - {fileID: 7787708210572638299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &8199831574716442117
@@ -175,9 +178,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbcbc8de17ffaf243b095da41ff2c923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeListData: {fileID: 0}
-  towerData: {fileID: 0}
+  typeListData: {fileID: 11400000, guid: 91137a4abe6682c4fb91d7dd8bcbb006, type: 2}
+  towerData: {fileID: 11400000, guid: 6ff8820a9eb57b447b3b53c9e96405cf, type: 2}
   shooter: {fileID: 0}
   detector: {fileID: 0}
   maxHealth: 1000
   towerSpawnRate: 30
+--- !u!114 &3305702217588498258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211560620665967074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8b5af5aba0b84dacaa9b135999268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2416405446680713055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4211560620665967074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40c25569f971e4fad02237f8413a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: 36df422171fdd1c4daee8f77d6890cf1, type: 2}
+  towerShoot:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6810434995598779635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7787708210572638299}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7787708210572638299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810434995598779635}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2888510179728488127}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

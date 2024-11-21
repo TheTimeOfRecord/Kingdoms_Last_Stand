@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce90233db289a9748b01d8d4d4e1bd51, type: 3}
-  m_Name: StageSO
+  m_Script: {fileID: 11500000, guid: 7859e06a0d8e64943ab54803bd053685, type: 3}
+  m_Name: TowerNormal
   m_EditorClassIdentifier: 
-  monstersToSpawn:
-  - monsterPrefab: {fileID: 7660221465027364978, guid: 0c1fee211692a5243ada40534b24bbbf, type: 3}
-    count: 50
-    spawnInterval: 3
+  towerName: "\uC77C\uBC18\uD0D1"
+  description: "\uC77C\uBC18 \uACF5\uACA9"
+  towerImage: {fileID: 21300000, guid: 5684b2b075fa687439d87b6256f59566, type: 3}
+  attackRange: 6
+  attackRate: 0.5

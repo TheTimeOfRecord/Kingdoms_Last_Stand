@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7859e06a0d8e64943ab54803bd053685, type: 3}
+  m_Name: TowerIce
+  m_EditorClassIdentifier: 
+  towerName: "\uC5BC\uC74C\uD0D1"
+  description: "\uC5BC\uC74C \uC18D\uB3C4 \uB454\uD654"
+  towerImage: {fileID: 21300000, guid: d5a2badd7df2e7d4d83a0864c19b50ee, type: 3}
+  attackRange: 8
+  attackRate: 1

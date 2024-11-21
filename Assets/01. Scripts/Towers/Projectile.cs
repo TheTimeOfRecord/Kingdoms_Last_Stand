@@ -10,7 +10,6 @@ public class Projectile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
     private Rigidbody2D projectileRigidbody;
-    private Outline outline;
     private float speed;
     private float damage;
     private float attackRange;
@@ -27,13 +26,12 @@ public class Projectile : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
         projectileRigidbody = GetComponent<Rigidbody2D>();
-        outline = GetComponent<Outline>();
     }
 
     public void SetPosition(Vector3 towerPosition, Vector3 targetDirection)
     {
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        transform.SetPositionAndRotation(towerPosition, Quaternion.Euler(0, 0, angle));//Quaternion.Euler(0, 0, angle)
+        transform.SetPositionAndRotation(towerPosition, Quaternion.Euler(0, 0, angle));
     }
 
     public void SetProjectileProperties(TowerStats stats, AttackTypeStat attackType, ProjectileSO data)
@@ -44,7 +42,6 @@ public class Projectile : MonoBehaviour
         damage = attackType.currentDamage;
         attackRange = stats.currentRange;
 
-        outline.effectColor = attackType.statData.typeColor;
         trailRenderer.startColor = attackType.statData.typeColor;
         trailRenderer.endColor = Color.white;
         spriteRenderer.sprite = projectileData.projectileSprite;

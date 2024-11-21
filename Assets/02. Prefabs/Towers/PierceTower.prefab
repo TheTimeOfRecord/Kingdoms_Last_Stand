@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 901271597163712437}
   - component: {fileID: 2218390301698168530}
   - component: {fileID: 5929874385619804814}
+  - component: {fileID: 7593335525506239181}
+  - component: {fileID: 3291482071873409288}
   m_Layer: 0
   m_Name: PierceTower
   m_TagString: Untagged
@@ -57,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3086339029284610443}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -106,8 +108,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 640808213, guid: d48b13146ca07d64c9ad33e181bc40d1, type: 3}
-  m_Color: {r: 0.78431374, g: 0.39215687, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5fa0f4027b73bcd46b9c630929a80ec3, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -129,7 +131,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e506af0cf40e00409452c0acff6a39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeListData: {fileID: 0}
-  towerData: {fileID: 0}
+  typeListData: {fileID: 11400000, guid: c7241b9d45d473f4ab23faa5aa4cfda6, type: 2}
+  towerData: {fileID: 11400000, guid: edaf0911848b34b4ba067e25fbc647fc, type: 2}
   shooter: {fileID: 0}
   detector: {fileID: 0}
+--- !u!114 &7593335525506239181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086339029284610443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8b5af5aba0b84dacaa9b135999268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3291482071873409288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086339029284610443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40c25569f971e4fad02237f8413a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: c5b586268fd6fe34cbf3ac195f18264c, type: 2}
+  towerShoot:
+    m_PersistentCalls:
+      m_Calls: []

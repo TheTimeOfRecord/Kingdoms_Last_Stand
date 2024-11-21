@@ -33,7 +33,7 @@ public class PoisonAttribute : AttributeLogics
         if (damageable != null)
         {
             damageable.TakeDamage(damage);
-            //damageable.StartDamageOverTime(damage)
+            damageable.StartDamageOverTime(damage);
         }
     }
 }
@@ -46,7 +46,7 @@ public class IceAttribute : AttributeLogics
         if (damageable != null)
         {
             damageable.TakeDamage(damage);
-            //damageable.ApplySlowDown()
+            damageable.ApplySlowDown();
         }
     }
 }
@@ -54,11 +54,11 @@ public class IceAttribute : AttributeLogics
 public class LightingAttribute : AttributeLogics
 {
     int enemyLayer = 1 << LayerMask.NameToLayer("Enemy");
-    float explosionRange = 3f;
+    float ShockRange = 3f;
     private Collider2D[] enemies = new Collider2D[10];
     public override void ApplyAttackLogic(GameObject target, float damage)
     {
-        int hitCount = Physics2D.OverlapCircleNonAlloc(target.transform.position, explosionRange, enemies, enemyLayer);
+        int hitCount = Physics2D.OverlapCircleNonAlloc(target.transform.position, ShockRange, enemies, enemyLayer);
         for (int i = 0; i < hitCount; i++)
         {
             IDamageable damageable = enemies[i].gameObject.GetComponent<IDamageable>();
