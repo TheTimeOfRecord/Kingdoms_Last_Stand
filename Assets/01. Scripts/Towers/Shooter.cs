@@ -33,20 +33,27 @@ public class Shooter : MonoBehaviour
     public void UpdateAttack(Vector3 targetDirection, TowerStats stats)
     {
         MakeProjectile(targetDirection, stats);
-
     }
 
     private void MakeProjectile(Vector3 targetDirection, TowerStats stats)
     {
+        Vector3 savePosition = shootPoint.position;
         if (objectPool == null) return;
 
         for (int index = 0; index < stats.typeStats.Count; index++)
         {
+            if (stats.typeStats.Count != 1)
+            {
+                float randomX = shootPoint.position.x + Random.Range(-0.5f, 0.5f);
+                float randomY = shootPoint.position.y + Random.Range(-0.5f, 0.5f);
+                savePosition = new Vector3(randomX, randomY, 0);
+            }
             if (stats.typeStats[index].isActive)
             {
+                Debug.Log(index);
                 Projectile projectileObject = objectPool.Get();
                 if (projectileObject == null) return;
-                projectileObject.SetPosition(shootPoint.position, targetDirection);
+                projectileObject.SetPosition(savePosition, targetDirection);
                 projectileObject.SetProjectileProperties(stats, stats.typeStats[index], projectileData);
                 projectileObject.Shoot(targetDirection);
                 projectileObject.Deactivate();

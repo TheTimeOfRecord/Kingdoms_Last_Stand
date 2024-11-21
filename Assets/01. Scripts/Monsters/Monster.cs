@@ -139,6 +139,7 @@ public class Monster : MonoBehaviour, IDamageable
     private void ReturnToPool()
     {
         gameObject.SetActive(false);
+        SponeManager.Instance.ReturnToPool(this.gameObject);
     }
 
     private void ChangeState(AIState newState)
@@ -153,7 +154,7 @@ public class Monster : MonoBehaviour, IDamageable
                 navMeshAgent.isStopped = true;
                 break;
             case AIState.Run:
-                animator.SetBool("Run",true);
+                animator.SetBool("Run", true);
                 navMeshAgent.isStopped = false;
                 break;
             case AIState.Attacking:
@@ -175,7 +176,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     public void ApplySlowDown()
     {
-        if(slowCoroutine != null) return;
+        if (slowCoroutine != null) return;
 
         slowCoroutine = StartCoroutine(TakeSlotDown());
     }
@@ -183,7 +184,7 @@ public class Monster : MonoBehaviour, IDamageable
     private IEnumerator TakeTicDamage(float damage)
     {
         float timer = ticTimer;
-        while(timer >= 0)
+        while (timer >= 0)
         {
             TakeDamage(damage);
             yield return ticRate;
