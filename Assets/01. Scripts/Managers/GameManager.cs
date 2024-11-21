@@ -8,6 +8,22 @@ public class GameManager : SingleTonBase<GameManager>
 
     public bool IsGameOver { get; private set; }
 
+    [SerializeField] public TowerHQ castle;
+
+    private int totalGold = 0;
+
+    public void AddGold(int amount)
+    {
+        totalGold += amount;
+        Debug.Log($"Gold collected: {totalGold}");
+    }
+
+    public void AddExp(int amount)
+    {
+        totalGold += amount;
+        Debug.Log($"Gold collected: {totalGold}");
+    }
+
     public void GameOver()
     {
         if(HqTower.CurrentHealth <= 0)

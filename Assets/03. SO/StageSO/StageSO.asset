@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b475a0b386ab05b4d9f0aff555733584, type: 3}
-  m_Name: Golem
+  m_Script: {fileID: 11500000, guid: ce90233db289a9748b01d8d4d4e1bd51, type: 3}
+  m_Name: StageSO
   m_EditorClassIdentifier: 
-  monsterName: 
-  maxHealth: 0
-  moveSpeed: 0
-  attackDamage: 0
-  attackSpeed: 0
-  goldDrop: 0
+  monstersToSpawn:
+  - monsterPrefab: {fileID: 7660221465027364978, guid: 0c1fee211692a5243ada40534b24bbbf, type: 3}
+    count: 50
+    spawnInterval: 3
