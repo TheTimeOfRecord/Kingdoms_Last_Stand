@@ -40,4 +40,22 @@ public class TowerStats
             typeStats[0].isActive = true;
         }
     }
+
+    /// <summary>
+    /// 타입을 받아서 해당 타입의 스텟정보를 모두 반환함, null 이 반환되면 오류(타워에 해당 스텟이 없음)
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public AttackTypeStat ReturnStatByType(AttributeType type)
+    {
+        for(int i = 0; i < typeStats.Count; i++)
+        {
+            if (typeStats[i].statData.type == type)
+            {
+                return typeStats[i];
+            }
+        }
+
+        return null;
+    }
 }
