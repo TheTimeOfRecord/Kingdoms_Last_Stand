@@ -46,5 +46,6 @@ public class TowerHQ : Tower
     public void AddNormalTower()
     {
         //TODO : 타워를 늘리는 위치 필요
+        GameManager.Instance.Player.inventory.GetTower(DataManager.Instance.towerPrefabDatabase.TowerList[0]);
     }
 }
