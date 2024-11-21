@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc20c29b38aeef49b9cf4e61dcf6e28, type: 3}
   m_Name: PoisonAttackStatList
   m_EditorClassIdentifier: 
-  AttackLists: []
+  AttackLists:
+  - {fileID: 11400000, guid: 9760f171ce2c2384a971033169d0f552, type: 2}
