@@ -33,14 +33,14 @@ public class Tower : MonoBehaviour
     protected virtual void Update()
     {
         detectTimer += Time.deltaTime;
-        detector.UpdateDetect();
+        Vector3 detectedDistance = detector.UpdateDetect();
         if (detectTimer >= detectInterval)
         {
             detectTimer = 0f;
             detector.UpdateDetect();
-            if (detector.UpdateDetect() != Vector3.zero)
+            if (detectedDistance != Vector3.zero)
             {
-                shooter.UpdateAttack(detector.UpdateDetect(), stats);
+                shooter.UpdateAttack(detectedDistance, stats);
             }
         }
     }

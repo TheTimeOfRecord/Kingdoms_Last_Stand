@@ -4,7 +4,9 @@ using UnityEngine.UI;
 
 public class Projectile : MonoBehaviour
 {
+    private AttributeLogicStateMachine attributeLogicStateMachine;
     private ProjectileSO projectileData = null;
+    private AttributeLogics attributeLogic = null;
     private SpriteRenderer spriteRenderer;
     private TrailRenderer trailRenderer;
     private Rigidbody2D projectileRigidbody;
@@ -20,6 +22,8 @@ public class Projectile : MonoBehaviour
 
     private void Awake()
     {
+        attributeLogicStateMachine = new AttributeLogicStateMachine();
+        attributeLogicStateMachine.Initialize();
         spriteRenderer = GetComponent<SpriteRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
         projectileRigidbody = GetComponent<Rigidbody2D>();
@@ -29,7 +33,6 @@ public class Projectile : MonoBehaviour
     public void SetPosition(Vector3 towerPosition, Vector3 targetDirection)
     {
         float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-        Debug.Log(angle);
         transform.SetPositionAndRotation(towerPosition, Quaternion.Euler(0, 0, angle));//Quaternion.Euler(0, 0, angle)
     }
 
@@ -40,10 +43,13 @@ public class Projectile : MonoBehaviour
         speed = projectileData.shootSpeed;
         damage = attackType.currentDamage;
         attackRange = stats.currentRange;
+
         outline.effectColor = attackType.statData.typeColor;
         trailRenderer.startColor = attackType.statData.typeColor;
         trailRenderer.endColor = Color.white;
         spriteRenderer.sprite = projectileData.projectileSprite;
+
+        attributeLogic = attributeLogicStateMachine.GetAttributeLogic(attackType.statData.type);
     }
 
     public void Shoot(Vector3 targetDirection)
@@ -67,7 +73,13 @@ public class Projectile : MonoBehaviour
             
             if (damageable != null)
             {
-                damageable.TakeDamage(damage);
+                //damageable.TakeDamage(damage);
+                attributeLogic?.ApplyAttackLogic(collider.gameObject, damage);
+
+                if (attributeLogic?.CanPenetrate == true)
+                {
+                    return;
+                }
             }
 
             CancelInvoke(nameof(DisappearProjectile));
