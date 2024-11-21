@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player
 {
@@ -12,6 +13,8 @@ public class Player
     public int CurrentGold { get; private set; }
 
     public InventoryTemp inventory;
+
+    public UnityAction onLevelUp;
 
     public Player()
     {
@@ -41,6 +44,7 @@ public class Player
         PlayerLevel++;
         //TODO : 특성 선택?
         //TODO 특성선택시 게임 멈춰서 몬스터를 못죽이도록
+        onLevelUp?.Invoke();
     }
 
     public void GetGold(int amount)
