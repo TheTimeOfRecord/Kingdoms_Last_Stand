@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6230861527964806197}
   - component: {fileID: 9013648339651264589}
   - component: {fileID: 208785371717208477}
+  - component: {fileID: 9178172858254392759}
+  - component: {fileID: 203153215692728086}
   m_Layer: 0
   m_Name: IceTower
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142800504401520297}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -75,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 640808213, guid: d48b13146ca07d64c9ad33e181bc40d1, type: 3}
-  m_Color: {r: 0.39215687, g: 0.78431374, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d5a2badd7df2e7d4d83a0864c19b50ee, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,10 +100,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e506af0cf40e00409452c0acff6a39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeListData: {fileID: 0}
-  towerData: {fileID: 0}
+  typeListData: {fileID: 11400000, guid: fcac5a18d15cb0b46a3003916dab0a95, type: 2}
+  towerData: {fileID: 11400000, guid: 7ae16a84d981ec445a974cdedb969eae, type: 2}
   shooter: {fileID: 0}
   detector: {fileID: 0}
+--- !u!114 &9178172858254392759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142800504401520297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8b5af5aba0b84dacaa9b135999268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &203153215692728086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142800504401520297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40c25569f971e4fad02237f8413a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: 3fcf81cad7f0b1649b39747ae74ee2df, type: 2}
+  towerShoot:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3537421567876545067
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class AttributeLogicStateMachine
             { AttributeType.Explosion, new ExplosionAttribute() },
             { AttributeType.Poison, new PoisonAttribute() },
             { AttributeType.Ice, new IceAttribute() },
-            { AttributeType.Lighting, new LightingAttribute() },
+            { AttributeType.Lightning, new LightingAttribute() },
             { AttributeType.Pierce, new PierceAttribute() },
             { AttributeType.Normal, new NormalAttribute() }
         };

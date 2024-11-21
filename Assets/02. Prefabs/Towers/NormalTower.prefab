@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 843297457104348321}
   - component: {fileID: 8224822320926570426}
   - component: {fileID: 9212987341906017434}
+  - component: {fileID: 7135314029768334480}
+  - component: {fileID: 7348151460711826794}
   m_Layer: 0
   m_Name: NormalTower
   m_TagString: Untagged
@@ -57,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083626193006357568}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -106,12 +108,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 640808213, guid: d48b13146ca07d64c9ad33e181bc40d1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5684b2b075fa687439d87b6256f59566, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1.4375}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -129,7 +131,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e506af0cf40e00409452c0acff6a39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeListData: {fileID: 0}
-  towerData: {fileID: 0}
+  typeListData: {fileID: 11400000, guid: fcac5a18d15cb0b46a3003916dab0a95, type: 2}
+  towerData: {fileID: 11400000, guid: de609879ee337fb4997fa634652adb32, type: 2}
   shooter: {fileID: 0}
   detector: {fileID: 0}
+--- !u!114 &7135314029768334480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083626193006357568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9d8b5af5aba0b84dacaa9b135999268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7348151460711826794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083626193006357568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea40c25569f971e4fad02237f8413a64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileData: {fileID: 11400000, guid: 87164cee70fecce47ad897ed94a96f6f, type: 2}
+  towerShoot:
+    m_PersistentCalls:
+      m_Calls: []

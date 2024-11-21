@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc20c29b38aeef49b9cf4e61dcf6e28, type: 3}
+  m_Name: TowerAttackTypeStatList
+  m_EditorClassIdentifier: 
+  AttackLists:
+  - {fileID: 11400000, guid: cb3651f860e31d44cbd57b3f8f1834da, type: 2}
+  - {fileID: 11400000, guid: 9760f171ce2c2384a971033169d0f552, type: 2}
+  - {fileID: 11400000, guid: c6d3f5b2d375b6842b9a1d964fc18bba, type: 2}
+  - {fileID: 11400000, guid: 84ec7787eea214c41a07d18443166274, type: 2}
+  - {fileID: 11400000, guid: 862ebc734307b444cb758b5381d1f278, type: 2}
+  - {fileID: 11400000, guid: a4e7df064b74e2949a20df4ec867a060, type: 2}
