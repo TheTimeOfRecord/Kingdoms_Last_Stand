@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class GameManager : SingleTonBase<GameManager>
 {
-    public TowerHQ HqTower { get; set; }
+    public TowerHQ HqTower;
 
     public bool IsGameOver { get; private set; }
 
-    [SerializeField] public TowerHQ castle;
+    public Player Player { get; private set; }
 
-    private int totalGold = 0;
+    protected override void Awake()
+    {
+        base.Awake();
+
+        Player = new Player();
+    }
 
     public void AddGold(int amount)
     {
-        totalGold += amount;
-        Debug.Log($"Gold collected: {totalGold}");
+        Player.GetGold(amount);
     }
 
     public void AddExp(int amount)
     {
-        totalGold += amount;
-        Debug.Log($"Gold collected: {totalGold}");
+        Player.GetExp(amount);
     }
 
     public void GameOver()

@@ -5,16 +5,16 @@ using static UnityEngine.GraphicsBuffer;
 
 public class MonsterDetector : MonoBehaviour
 {
-    private Transform HQTowerPosition = GameManager.Instance.HqTower.transform;
+    private Transform HQTowerPosition;
     private Vector3 closestMonsterDirection;
-    private Collider2D[] detectedMonsters;
+    private Collider2D[] detectedMonsters = new Collider2D[15];
     private LayerMask layerMask;
     private float towerAttackRange;
 
-    private void Awake()
+    private void Start()
     {
+        HQTowerPosition = GameManager.Instance.HqTower.gameObject.transform;
         layerMask = LayerMask.GetMask("Enemy");
-        detectedMonsters = new Collider2D[15];
     }
 
     public void InitMonsterDetector(float range)
@@ -40,7 +40,7 @@ public class MonsterDetector : MonoBehaviour
             Collider2D monster = detectedMonsters[i];
             if (monster != null)
             {
-                float distance = Vector2.Distance(transform.position, monster.transform.position);
+                float distance = Vector2.Distance(HQTowerPosition.position, monster.transform.position);
 
                 if (distance < minDistance)
                 {
@@ -52,7 +52,5 @@ public class MonsterDetector : MonoBehaviour
 
         closestMonsterDirection = closestMonsterPosition - transform.position;
         return closestMonsterDirection;
-        //TODO 
-        //Overlap으로 계속 부를지
     }
 }
