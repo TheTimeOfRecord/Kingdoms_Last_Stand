@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dc20c29b38aeef49b9cf4e61dcf6e28, type: 3}
-  m_Name: TowerAttackTypeStatList
+  m_Name: NormalAttackStatList
   m_EditorClassIdentifier: 
   AttackLists:
   - {fileID: 11400000, guid: cb3651f860e31d44cbd57b3f8f1834da, type: 2}

@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e506af0cf40e00409452c0acff6a39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeListData: {fileID: 11400000, guid: fcac5a18d15cb0b46a3003916dab0a95, type: 2}
+  typeListData: {fileID: 11400000, guid: e798ff682f5cc054e8074c6c6425e888, type: 2}
   towerData: {fileID: 11400000, guid: ba1c334241d4dee42a8fc92c2b52d711, type: 2}
   shooter: {fileID: 0}
   detector: {fileID: 0}

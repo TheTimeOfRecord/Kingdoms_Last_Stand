@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
         attackRange = stats.currentRange;
 
         trailRenderer.startColor = attackType.statData.typeColor;
-        trailRenderer.endColor = attackType.statData.typeColor;
+        trailRenderer.endColor = Color.white;
         spriteRenderer.sprite = projectileData.projectileSprite;
 
         attributeLogic = attributeLogicStateMachine.GetAttributeLogic(attackType.statData.type);

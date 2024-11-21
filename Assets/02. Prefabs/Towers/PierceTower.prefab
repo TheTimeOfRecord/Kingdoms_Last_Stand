@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e506af0cf40e00409452c0acff6a39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  typeListData: {fileID: 11400000, guid: fcac5a18d15cb0b46a3003916dab0a95, type: 2}
+  typeListData: {fileID: 11400000, guid: c7241b9d45d473f4ab23faa5aa4cfda6, type: 2}
   towerData: {fileID: 11400000, guid: edaf0911848b34b4ba067e25fbc647fc, type: 2}
   shooter: {fileID: 0}
   detector: {fileID: 0}
