@@ -14,25 +14,6 @@ public class TowerStatsHandler
         this.tower = tower;
     }
 
-    /// <summary>
-    /// 공격 타입 리스트에서 데미지 가져오기, 타입 정보는 tower.stats.typeStats[index].statData.type 으로 가져와야함
-    /// </summary>
-    /// <param name="index"></param>
-    /// <returns></returns>
-    public float ShootDamage(AttributeType type)
-    {
-        if (tower.typeListData.AttackLists.Count != 6)
-        {
-            return tower.stats.typeStats[0].statData.damage * Mathf.Pow(tower.stats.typeStats[0].upgradeCount, tower.stats.typeStats[0].statData.upgradeFactor);
-        }
-        else
-        {
-            int index = (int)type;
-            float damage = tower.stats.typeStats[index].statData.damage * Mathf.Pow(tower.stats.typeStats[index].upgradeCount, tower.stats.typeStats[index].statData.upgradeFactor);
-            return damage;
-        }
-    }
-
     public float UpgradePrice(AttributeType type)
     {
         if (tower.typeListData.AttackLists.Count != 6) return 0;
