@@ -7,7 +7,7 @@ public class InventoryTemp
 {
     public int[] ownTowerCounts;
 
-    InventoryTemp()
+    public InventoryTemp()
     {
         ownTowerCounts = new int[DataManager.Instance.towerPrefabDatabase.TowerList.Count];
         Array.Fill(ownTowerCounts, 0);

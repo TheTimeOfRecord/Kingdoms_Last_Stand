@@ -11,12 +11,15 @@ public class Player
 
     public int CurrentGold { get; private set; }
 
-    
+    public InventoryTemp inventory;
+
     public Player()
     {
         PlayerLevel = 1;
         CurrentExp = 0;
         CurrentGold = 0;
+
+        inventory = new InventoryTemp();
     }
 
     public void GetExp(int amount)
