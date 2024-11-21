@@ -20,14 +20,16 @@ public class Tower : MonoBehaviour
         shooter = GetComponent<Shooter>();
         detector = GetComponent<MonsterDetector>();
         statsHandler = new TowerStatsHandler(this);
-    }
 
-    protected virtual void Start()
-    {
         stats.InitTowerData(towerData.attackRange, towerData.attackRate);
         stats.InitAttackStats(typeListData);
         detector.InitMonsterDetector(towerData.attackRange);
         detectInterval = stats.currentRate;
+    }
+
+    protected virtual void Start()
+    {
+        
     }
 
     protected virtual void Update()

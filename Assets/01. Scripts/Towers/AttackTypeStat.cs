@@ -7,7 +7,7 @@ public class AttackTypeStat
 {
     public int upgradeCount = 0;
     public bool isActive = false;
-    public float currentDamage => statData.damage * Mathf.Pow(upgradeCount, statData.upgradeFactor);
+    public float currentDamage => statData.damage * Mathf.Pow(statData.upgradeFactor, upgradeCount);
     public AttackTypeStatSO statData;
 
     public AttackTypeStat(AttackTypeStatSO dataSO)
