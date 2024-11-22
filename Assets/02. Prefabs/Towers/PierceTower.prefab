@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5929874385619804814}
   - component: {fileID: 7593335525506239181}
   - component: {fileID: 3291482071873409288}
+  - component: {fileID: -2134298901458023039}
   m_Layer: 0
   m_Name: PierceTower
   m_TagString: Untagged
@@ -163,3 +164,15 @@ MonoBehaviour:
   towerShoot:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-2134298901458023039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3086339029284610443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6eee07a0b4b0145ac7d176b1e297ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

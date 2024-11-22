@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 208785371717208477}
   - component: {fileID: 9178172858254392759}
   - component: {fileID: 203153215692728086}
+  - component: {fileID: 8726659505295523163}
   m_Layer: 0
   m_Name: IceTower
   m_TagString: Untagged
@@ -132,6 +133,18 @@ MonoBehaviour:
   towerShoot:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8726659505295523163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142800504401520297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6eee07a0b4b0145ac7d176b1e297ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3537421567876545067
 GameObject:
   m_ObjectHideFlags: 0

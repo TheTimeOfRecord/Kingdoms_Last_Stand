@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttributeLogicStateMachine 
+public class AttributeLogicState 
 {
     private Dictionary<AttributeType, AttributeLogics> attributeLogicMap;
 
