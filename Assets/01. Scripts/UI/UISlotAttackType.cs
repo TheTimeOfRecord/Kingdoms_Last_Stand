@@ -5,30 +5,30 @@ using UnityEngine;
 
 public abstract class UISlotAttackType : MonoBehaviour
 {
-    [Header("Default Attack Type Data")]
+    [Header("Default Attack Type Info")]
     [SerializeField] protected TMP_Text txtAtkType;
     [SerializeField] protected TMP_Text txtAtkTypeDamage;
-    //[SerializeField] protected TMP_Text txtAtkTypeUpgradeCost;
     [SerializeField] protected TMP_Text txtAtkTypeDescription;
 
     protected Tower tower;
-    protected List<AttackTypeStatSO> attackTypeStatList;
+    protected AttackTypeStat attackTypeData;
+    protected AttributeType attackType;
 
-    public virtual void SetData(Tower tower)
+    protected virtual void Awake()
+    {
+        
+    }
+
+    public virtual void SetData(AttackTypeStat attackTypeData, Tower tower)
     {
         this.tower = tower;
-        attackTypeStatList = tower.typeListData.AttackLists;
+        this.attackTypeData = attackTypeData;
+        attackType = attackTypeData.statData.type;
+        // TODO : Set txtAtkType , txtAtkTypeDamage , txtAtkTypeDescription
+        txtAtkType.text = $"{attackTypeData.statData.typeKorName} +{attackTypeData.upgradeCount}";
+        txtAtkTypeDamage.text = $"°ø°Ý·Â {attackTypeData.currentDamage.ToString("F1")}";
+        txtAtkTypeDescription.text = attackTypeData.statData.typeDescription;
     }
-}
-public class UISlotAttackTypeBottom : UISlotAttackType
-{
-    [Header("Bottom Attack Type Data")]
-    [SerializeField] protected TMP_Text txtAtkTypeUpgradeCost;
-    public override void SetData(Tower tower)
-    {
-        this.tower = tower;
 
-        //txtAtkType.text = tower.towerData.towerName;
-        //txtAtkTypeDamage = tower.
-    }
+
 }
