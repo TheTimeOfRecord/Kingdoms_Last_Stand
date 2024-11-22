@@ -45,6 +45,10 @@ public class TowerStatsHandler
         if (tower.stats.typeStats[index].upgradeCount <= 10)
         {
             tower.stats.typeStats[index].upgradeCount++;
+            if (tower.stats.typeStats[index].upgradeCount == 1)
+            {
+                ActiveTowerTypeAttack(type);
+            }
             return true;
         }
         else
