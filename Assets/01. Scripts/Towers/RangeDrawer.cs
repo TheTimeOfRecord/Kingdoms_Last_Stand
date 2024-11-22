@@ -26,22 +26,21 @@ public class RangeDrawer : MonoBehaviour
         lineRenderer.startColor = tower.typeListData.AttackLists[index].typeColor;
         lineRenderer.endColor = tower.typeListData.AttackLists[index].typeColor;
         lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.sortingOrder = 4;
         radius = tower.towerData.attackRange;
     }
 
-    void Update()
+    private void OnMouseEnter()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            isDrawing = true;
-            lineRenderer.enabled = true;
-            DrawCircle(radius);
-        }
-        else if (Input.GetKeyUp(KeyCode.A))
-        {
-            isDrawing = false;
-            lineRenderer.enabled = false;
-        }
+        isDrawing = true;
+        lineRenderer.enabled = true;
+        DrawCircle(radius);
+    }
+
+    private void OnMouseExit()
+    {
+        isDrawing = false;
+        lineRenderer.enabled = false;
     }
 
     private void DrawCircle(float radius)

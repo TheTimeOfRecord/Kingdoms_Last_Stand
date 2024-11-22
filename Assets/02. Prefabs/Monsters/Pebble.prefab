@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterStats: {fileID: 11400000, guid: 8173ab2354b4f2b4ca8fd2366f716c1b, type: 2}
+  startTrans: {fileID: 0}
 --- !u!195 &7213292092571035697
 NavMeshAgent:
   m_ObjectHideFlags: 0
