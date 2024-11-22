@@ -24,6 +24,7 @@ public class Monster : MonoBehaviour, IDamageable
     private Transform mainTarget;
 
     [SerializeField] private MonsterStatsSO monsterStats;
+    [SerializeField] private Transform startTrans;
     private IObjectPool<Monster> objectPool;
     public IObjectPool<Monster> ObjectPool { set => objectPool = value; }
 
@@ -37,6 +38,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     void Awake()
     {
+        this.transform.position = startTrans.position;
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         navMeshAgent.updateRotation = false;
