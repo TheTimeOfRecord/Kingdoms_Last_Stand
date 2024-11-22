@@ -50,7 +50,6 @@ public class Shooter : MonoBehaviour
             }
             if (stats.typeStats[index].isActive)
             {
-                Debug.Log(index);
                 Projectile projectileObject = objectPool.Get();
                 if (projectileObject == null) return;
                 projectileObject.SetPosition(savePosition, targetDirection);
@@ -60,5 +59,4 @@ public class Shooter : MonoBehaviour
             }
         }
     }
-    //TODO 탄 6개 출발위치세팅로직?
 }
