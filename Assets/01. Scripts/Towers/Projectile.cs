@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Projectile : MonoBehaviour
 {
-    private AttributeLogicStateMachine attributeLogicStateMachine;
+    private AttributeLogicState attributeLogicState;
     private ProjectileSO projectileData = null;
     private AttributeLogics attributeLogic = null;
     private SpriteRenderer spriteRenderer;
@@ -14,15 +14,14 @@ public class Projectile : MonoBehaviour
     private float damage;
     private float attackRange;
     private bool isReleased = false;
-    [SerializeField] private float timeoutDelay = 3f;
 
     private IObjectPool<Projectile> objectPool;
     public IObjectPool<Projectile> ObjectPool { set => objectPool = value; }
 
     private void Awake()
     {
-        attributeLogicStateMachine = new AttributeLogicStateMachine();
-        attributeLogicStateMachine.Initialize();
+        attributeLogicState = new AttributeLogicState();
+        attributeLogicState.Initialize();
         spriteRenderer = GetComponent<SpriteRenderer>();
         trailRenderer = GetComponent<TrailRenderer>();
         projectileRigidbody = GetComponent<Rigidbody2D>();
@@ -46,7 +45,7 @@ public class Projectile : MonoBehaviour
         trailRenderer.endColor = Color.white;
         spriteRenderer.sprite = projectileData.projectileSprite;
 
-        attributeLogic = attributeLogicStateMachine.GetAttributeLogic(attackType.statData.type);
+        attributeLogic = attributeLogicState.GetAttributeLogic(attackType.statData.type);
     }
 
     public void Shoot(Vector3 targetDirection)
@@ -70,7 +69,6 @@ public class Projectile : MonoBehaviour
             
             if (damageable != null)
             {
-                //damageable.TakeDamage(damage);
                 attributeLogic?.ApplyAttackLogic(collider.gameObject, damage);
 
                 if (attributeLogic?.CanPenetrate == true)

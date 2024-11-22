@@ -15,5 +15,5 @@ MonoBehaviour:
   towerName: "\uC5BC\uC74C\uD0D1"
   description: "\uC5BC\uC74C \uC18D\uB3C4 \uB454\uD654"
   towerImage: {fileID: 21300000, guid: d5a2badd7df2e7d4d83a0864c19b50ee, type: 3}
-  attackRange: 8
+  attackRange: 4
   attackRate: 1
