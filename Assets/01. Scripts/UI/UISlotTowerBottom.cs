@@ -13,13 +13,14 @@ public class UISlotTowerBottom : UISlotTower
     public override void InitData(Tower tower)
     {
         base.InitData(tower);
-        uiSlotAttackTypes[indexSelectedAtkType].Select();
+        if (attackTypeStats.Count > 1)
+            uiSlotAttackTypes[indexSelectedAtkType].Select();
     }
     public override void SetData(Tower tower)
     {
         base.SetData(tower);
         SetUISlotAttackTypes();
-        // TODO : 강화 버튼
+       
     }
     public override void ClearData()
     {
@@ -31,28 +32,30 @@ public class UISlotTowerBottom : UISlotTower
         indexSelectedAtkType = 0;
     }
 
-    // TODO : 강화 비용
     protected override void InitUISlotListAttackType()
     {
-        int slotIndex = 0;
-        foreach (var attackTypeStat in attackTypeStats)
+        if (attackTypeStats.Count > 1)
         {
-            if(attackTypeStat.statData.type != AttributeType.Normal)
+            int slotIndex = 0;
+            foreach (var attackTypeStat in attackTypeStats)
             {
-                // 이미 슬롯이 존재하는 경우 재사용
-                if (slotIndex < uiSlotAttackTypes.Count)
+                if (attackTypeStat.statData.type != AttributeType.Normal)
                 {
-                    var existingSlot = uiSlotAttackTypes[slotIndex];
-                    existingSlot.SetData(attackTypeStat, tower); // 데이터 업데이트
-                    existingSlot.gameObject.SetActive(true); // 활성화
-                }
-                else
-                {
-                    // 슬롯이 부족하면 새로 생성
-                    InitUISlotAttackType(attackTypeStat);
-                }
+                    // 이미 슬롯이 존재하는 경우 재사용
+                    if (slotIndex < uiSlotAttackTypes.Count)
+                    {
+                        var existingSlot = uiSlotAttackTypes[slotIndex];
+                        existingSlot.SetData(attackTypeStat, tower); // 데이터 업데이트
+                        existingSlot.gameObject.SetActive(true); // 활성화
+                    }
+                    else
+                    {
+                        // 슬롯이 부족하면 새로 생성
+                        InitUISlotAttackType(attackTypeStat);
+                    }
 
-                slotIndex++;
+                    slotIndex++;
+                }
             }
         }
 
@@ -67,11 +70,14 @@ public class UISlotTowerBottom : UISlotTower
 
     public void SetUISlotAttackTypes()
     {
-        foreach (var attackTypeStat in attackTypeStats)
+        if (attackTypeStats.Count > 1)
         {
-            if (attackTypeStat.statData.type != AttributeType.Normal)
+            foreach (var attackTypeStat in attackTypeStats)
             {
-                uiSlotAttackTypes[(int)attackTypeStat.statData.type].SetData(attackTypeStat, tower);
+                if (attackTypeStat.statData.type != AttributeType.Normal)
+                {
+                    uiSlotAttackTypes[(int)attackTypeStat.statData.type].SetData(attackTypeStat, tower);
+                }
             }
         }
     }

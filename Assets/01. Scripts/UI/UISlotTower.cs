@@ -21,6 +21,7 @@ public abstract class UISlotTower : MonoBehaviour
 
     public virtual void InitData(Tower tower)
     {
+        ClearData();
         this.tower = tower;
 
         if (tower.stats == null)
@@ -36,7 +37,7 @@ public abstract class UISlotTower : MonoBehaviour
         }
 
         this.attackTypeStats = tower.stats.typeStats;
-        SetBaseAttackStat();
+        InitBaseAttackStat();
         InitUISlotListAttackType();
 
         SetData(tower);
@@ -66,7 +67,7 @@ public abstract class UISlotTower : MonoBehaviour
         txtTowerDescription.text = "ÆÈ·È½À´Ï´Ù.";
     }
 
-    protected void SetBaseAttackStat()
+    protected void InitBaseAttackStat()
     {
         baseAttackStat = ReturnStatByType(AttributeType.Normal);
     }
