@@ -6,9 +6,6 @@ public class SponeManager : SingleTonBase<SponeManager>
 {
     private Dictionary<GameObject, IObjectPool<GameObject>> monsterPools;
 
-    [SerializeField] private int defaultCapacity = 10;
-    [SerializeField] private int maxSize = 100;
-
     protected override void Awake()
     {
         monsterPools = new Dictionary<GameObject, IObjectPool<GameObject>>();
@@ -24,9 +21,7 @@ public class SponeManager : SingleTonBase<SponeManager>
             actionOnGet: obj => obj.SetActive(true),
             actionOnRelease: obj => obj.SetActive(false),
             actionOnDestroy: Destroy,
-            collectionCheck: false,
-            defaultCapacity: defaultCapacity,
-            maxSize: maxSize
+            collectionCheck: false
         );
     }
 
