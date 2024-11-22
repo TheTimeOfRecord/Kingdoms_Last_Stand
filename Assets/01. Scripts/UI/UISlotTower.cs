@@ -82,6 +82,6 @@ public abstract class UISlotTower : MonoBehaviour
             }
         }
 
-        return null;
+        return attackTypeStats[0];
     }
 }
