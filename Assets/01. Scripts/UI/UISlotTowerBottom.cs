@@ -107,6 +107,7 @@ public class UISlotTowerBottom : UISlotTower
     private void SellTower()
     {
         UIManager.Instance.Sell(tower.statsHandler.SellPrice);
+        Destroy(tower.gameObject);
         ClearData();
     }
 }
